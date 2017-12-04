@@ -1,7 +1,16 @@
 const Nightmare = require('nightmare')
-let artistArray = [];
+let pandoraArtistsSorted = [];
+
 function getPandora() {
-  return Nightmare({show: true}).goto('https://www.pandora.com/account/sign-in').wait('input[name="username"]').type('input[name="username"]', 'nattysoccer9@yahoo.com').type('input[name="password"]', 'ska4gsus').wait(750).click('button[type="submit"]').wait(5000).goto('https://www.pandora.com/profile/thumbs/nattysoccer9').evaluate(() => {
+  return Nightmare({show: true})
+  .goto('https://www.pandora.com/account/sign-in')
+  .wait('input[name="username"]')
+  .type('input[name="username"]', 'nattysoccer9@yahoo.com')
+  .type('input[name="password"]', 'ska4gsus')
+  .wait(750)
+  .click('button[type="submit"]')
+  .wait(5000)
+  .goto('https://www.pandora.com/profile/thumbs/nattysoccer9').evaluate(() => {
     var pageSize = 100;
     var stationPageSize = 250;
     var webname = location.pathname.split("/").pop();
@@ -97,13 +106,28 @@ function getPandora() {
       var string = "Artist";
       for (var i = 0; i < allThumbs.length; i++) {
         var thumb = allThumbs[i];
-        string += "\n" + thumb.artistName.replace(/\t/g, "    ").replace(/\n|\r/g, "") + "";
+        string += "\n" + ",," + thumb.artistName.replace(/\t/g, "    ").replace(/\n|\r/g, "") + "";
+        // console.log(thumb.artistName[i])
+        // pandoraArtists.push(thumb.artistName[i])
       }
-      console.log(string)
+      console.log(string);
+      let pandoraArtists = string.split(",,");
+      pandoraArtists.sort().filter(function(item, pos, ary) {
+          !pos || item != ary[pos - 1];
+      })
+      function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+      console.log(pandoraArtists)
+      pandoraArtistsSorted = pandoraArtists.filter( onlyUnique );
+      console.log(pandoraArtistsSorted)
+      // console.log(pandoraArtists);
+      // console.log('Pandora Artists array', pandoraArtistsSorted);
     }
   })
-.then(result => {
-  console.log('RESULTS:', artistArray);
-});
+  .then(result => {
+    console.log('RESULTS:', pandoraArtists);
+  });
 }
+
 getPandora()

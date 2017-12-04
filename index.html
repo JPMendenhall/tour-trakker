@@ -8,6 +8,20 @@
   </head>
 
   <body>
+    <div>
+     <h3> Enter City and State</h3>
+
+    <input id="address" type="text" placeholder="City, State" />
+    <button id="btn">Get LatLong</button>
+    <!-- <div>
+        <p>Latitude:
+            <input type="text" id="latitude" readonly />
+        </p>
+        <p>Longitude:
+            <input type="text" id="longitude" readonly />
+        </p>
+    </div> -->
+</div>
     <div class="container">
       <div class="row">
         <div class="col-xs-6">
@@ -65,8 +79,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.1/bluebird.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <!--Wait to link, or else script will run whenever page loads <script src="pandoraScrape.js"></script> -->
-    <script src="jambase.js" type="text/javascript" > </script>
+    <script src="https://maps.googleapis.com/maps/api/js"  /></script>
+    <!-- Not sure how to use
+    <script src="scripts/pandoraScrape.js"></script> -->
+    <script src="scripts/jambase.js" type="text/javascript" > </script>
+    <script src="scripts/latlong.js" type="text/javascript" > </script>
   </body>
 
 </html>

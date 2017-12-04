@@ -8,7 +8,6 @@ const transformConcert = (concert) => ({
     artists: concert.performance.map(p => p.displayName)
   })
 
-
 const mergeAndFlattenArtists = concert => {
   return Promise.resolve(concert.artists)
     .delay(250)
@@ -46,37 +45,6 @@ const searchEvents = (lat, long, page = 1) => {
     return arr
   }, [])
   .catch(err => console.error('searchEvents:', err))
-  // .then(concerts => {
-  //   return concerts.map(c => {
-  //     return Promise.all(artists.map(a => getArtistInfo(a)))
-  //
-  //   })
-  //   // return concerts.map(({artists}) =>
-  //   // .then(artistResults => {
-  //   //
-  //   //     return {avatar: }
-  //   // })
-  // })
-    // success: function(json) {
-    //   const {results} = json && json.resultsPage || {};
-    //   let eventName = results.event[35].displayName;
-    //   let artistName = results.event[35].performance[0].artist.displayName;
-    //   console.log(json)
-    //   console.log('Event Name', results.event[35].displayName)
-    //   //Refer to totalEntries to know how many pages to loop through
-    //   // performance[0] needs to be looped through since multiple artists play same show
-    //   console.log('Because you liked a track from ',
-    //   results.event[35].performance[0].artist.displayName)
-    //   console.log('Concert Date', results.event[35].start.datetime)
-    //   console.log('Venue', results.event[35].venue.displayName)
-    //   console.log('Event and Ticket Details', results.event[35].uri)
-    //     // GET request should only be ran if artist name matches "liked" artist collection
-    //
-    //    // Parse the response.
-    //   // Do other things.
-    // },
-    // error: console.error.bind(console, 'SONGKICK Failed: ')//function(xhr, status, err) {}
-    // });
 }
 
 function getArtistThumb(artistName) {
@@ -93,8 +61,8 @@ function getArtistThumb(artistName) {
     return 'nophoto.jpg'
   })
 }
-//Need to incorporate saved JSFiddle to retrieve lat and long based on input
-searchEvents(39.768, -86.158)
-.then(results => {
-  console.info('GREAT SUCCESS:', results)
-})
+// Need to incorporate latlong.js file
+// searchEvents(lat, long)
+// .then(results => {
+//   console.info('GREAT SUCCESS:', results)
+// })
