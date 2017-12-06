@@ -12,8 +12,8 @@ function showResult(result) {
 }
 
 function getLatitudeLongitude(callback, address) {
-    // If adress is not supplied, use default value 'Ferrol, Galicia, Spain'
-    address = address || 'Ferrol, Galicia, Spain';
+    // If address is not supplied, use 'Denver, Colorado'
+    address = address || 'Denver, Colorado';
     // Initialize the Geocoder
     geocoder = new google.maps.Geocoder();
     if (geocoder) {
@@ -27,10 +27,9 @@ function getLatitudeLongitude(callback, address) {
     }
 }
 
-var button = document.getElementById('btn');
+var button = document.getElementById('locationBtn');
 
 button.addEventListener("click", function () {
     var address = document.getElementById('address').value;
     getLatitudeLongitude(showResult, address)
-
 });

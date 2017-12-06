@@ -1,89 +1,121 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Tour Trakker</title>
-    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  </head>
 
-  <body>
-    <div>
-     <h3> Enter City and State</h3>
+<head>
+  <title>Tour Trakker</title>
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/cardstyle.css" />
+  <link rel="stylesheet" type="text/css" href="css/loading.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
 
-    <input id="address" type="text" placeholder="City, State" />
-    <button id="btn">Get LatLong</button>
-    <!-- <div>
-        <p>Latitude:
-            <input type="text" id="latitude" readonly />
-        </p>
-        <p>Longitude:
-            <input type="text" id="longitude" readonly />
-        </p>
-    </div> -->
-</div>
+<body>
+
+  <div class="container">
+    <div class="row pandoraCenter">
+      <h1 class="tourtrakker ">Tour Trakker</h1>
+    </div>
+
     <div class="container">
       <div class="row">
-        <div class="col-xs-6">
-        <div id='events-panel' class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Events</h3>
-          </div>
-          <div class="panel-body">
-            <div id="events" class="list-group">
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Event title</h4>
-                <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p class="venue"></p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Event title</h4>
-                <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p class="venue"></p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Event title</h4>
-                <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p class="venue"></p>
-              </a>
-              <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">Event title</h4>
-                <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <p class="venue"></p>
-              </a>
+        <div class="col-md-offset-4 col-md-4">
+          <div class="form-login">
+            <h4 class="form-text">Sync Your Pandora Account</h4>
+            <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username" />
+            </br>
+            <input type="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" />
+            </br>
+            <div class="wrapper">
+              <span class="group-btn">
+                <a href="#" class="btn btn-primary btn-md">Sync Liked Artists<i class="fa fa-sign-in"></i></a>
+            </span>
             </div>
           </div>
-          <div class="panel-footer">
-            <nav>
-              <ul class="pager">
-                <li id="prev" class="previous"><a href="#"><span aria-hidden="true">&larr;</span></a></li>
-                <li id="next" class="next"><a href="#"><span aria-hidden="true">&rarr;</span></a></li>
-              </ul>
-            </nav>
-          </div>
         </div>
+      </div><br />
 
-        <div id='attraction-panel' class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Attraction</h3>
-          </div>
-          <div id="attraction" class="panel-body">
-            <h4 class="list-group-item-heading">Attraction title</h4>
-            <img class="col-xs-12" src="">
-            <p id="classification"></p>
+<!-- Loading Animation while Pandora is scraping
+<div id="load">
+<div>G</div>
+<div>N</div>
+<div>I</div>
+<div>C</div>
+<div>N</div>
+<div>Y</div>
+<div>S</div>
+</div> -->
+
+      <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+          <div class="form-login">
+            <h4 class="form-text">Enter Location</h4>
+            <input type="text" id="address" class="form-control input-sm chat-input" placeholder="City, State" />
+            <br />
+            <div class="wrapper">
+              <span class="group-btn">
+                <button id="locationBtn" class="btn btn-primary btn-md">Find local shows</button>
+            </span>
+            </div>
           </div>
         </div>
+      </div><br />
+
+      <!-- Event Cards -->
+      <div class="centerPandora">
+        <div class="row">
+          <div class="col-med-12">
+            <div class="content">
+              <div class="card">
+                <div class="firstinfo"><img src="https://media-exp1.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAAs-AAAAJGM3NTQyMTZhLTlkOTctNGE2Mi1iMzRiLWI3YTUwZTY4MDM4Mg.jpg" />
+                  <div class="profileinfo">
+                    <h1>Capstone Presentation</h1>
+                    <h3>December 14, 2017</h3>
+                    <h4>Galvanize - Golden Triangle</h4>
+                    <p class="bio">Featuring James Mendenhall</p>
+                  </div>
+                </div>
+              </div>
+              <div class="badgescard info"><span id="days"></span><span id="hours"></span><span id="minutes"></span><span id="seconds"></span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div><br /><br /><br /><br /><div class="centerPandora">
+        <div class="row">
+          <div class="col-med-12">
+            <div class="content">
+              <div class="card">
+                <div class="firstinfo"><img src="https://media-exp1.licdn.com/mpr/mpr/shrinknp_400_400/AAIA_wDGAAAAAQAAAAAAAAs-AAAAJGM3NTQyMTZhLTlkOTctNGE2Mi1iMzRiLWI3YTUwZTY4MDM4Mg.jpg" />
+                  <div class="profileinfo">
+                    <h1>Capstone Presentation</h1>
+                    <h3>December 14, 2017</h3>
+                    <h4>Galvanize - Golden Triangle</h4>
+                    <p class="bio">Featuring James Mendenhall</p>
+                  </div>
+                </div>
+              </div>
+              <div class="badgescard info"><span id="days"></span><span id="hours"></span><span id="minutes"></span><span id="seconds"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br /><br /><br /><br />
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.1/bluebird.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js"  /></script>
-    <!-- Not sure how to use
-    <script src="scripts/pandoraScrape.js"></script> -->
-    <script src="scripts/jambase.js" type="text/javascript" > </script>
-    <script src="scripts/latlong.js" type="text/javascript" > </script>
-  </body>
+  </div>
+  <script src="/bower_components/jquery.countdown/dist/jquery.countdown.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.1/bluebird.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="https://maps.googleapis.com/maps/api/js" /></script>
+  <!-- <script src="scripts/pandoraScrape.js" type="text/javascript"></script> -->
+  <script src="scripts/jambase.js" type="text/javascript"></script>
+  <script src="scripts/latlong.js" type="text/javascript"></script>
+  <script src="scripts/clock.js" type="text/javascript"></script>
+
+</body>
 
 </html>

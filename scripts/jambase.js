@@ -4,7 +4,7 @@ const transformConcert = (concert) => ({
     eventName: concert.displayName,
     venue: concert.venue.displayName,
     url: concert.uri,
-    date: concert.start.date,
+    date: concert.start.datetime,
     artists: concert.performance.map(p => p.displayName)
   })
 

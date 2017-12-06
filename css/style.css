@@ -1,0 +1,66 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 100%;
+  background: url('../concert.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background font-size: 16px;
+  background-repeat: no-repeat;
+  background-size: stretch;
+  overflow: scroll;
+}
+
+.tourtrakker {
+  font-size: 120px;
+  font-family: 'Rock Salt', cursive;
+  color: white;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 40px;
+  text-shadow: 2px 2px midnightblue;
+}
+
+.feed {
+  margin: auto;
+}
+
+.centerPandora {
+  margin: auto;
+  max-width: 460px;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+.container {
+  padding: 25px;
+  position: relative;
+}
+
+.form-login {
+  background-color: #EDEDED;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  border-color: #d2d2d2;
+  border-width: 5px;
+  box-shadow: 0 1px 0 #cfcfcf;
+}
+
+.form-text {
+  border: 0 solid #fff;
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.wrapper {
+  text-align: center;
+}
