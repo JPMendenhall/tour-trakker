@@ -34,7 +34,15 @@ html {
   display: block;
   width: 190px;
   height: 300px;
-  background: indigo;
+  /*background: red;  For browsers that do not support gradients */
+  background: -webkit-linear-gradient(black, indigo);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(black, indigo);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(black, indigo);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(black, indigo);
+  /* Standard syntax */
   position: absolute;
   animation: rotatemagic 0.75s cubic-bezier(0.425, 1.04, 0.47, 1.105) 1s both;
 }

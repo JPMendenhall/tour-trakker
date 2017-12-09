@@ -1,4 +1,3 @@
-// songkick apikey=io09K9l3ebJxmxe2
 
 const transformConcert = (concert) => ({
     eventName: concert.displayName,
@@ -15,13 +14,16 @@ const mergeAndFlattenArtists = concert => {
     .map(artist => {
       const result = Object.assign({}, concert, {
         artist: artist,
-        thumb: getArtistThumb(artist)
+        thumb: ""
       })
       delete result.artists
       return Promise.props(result)
     })
     .delay(250)
 }
+
+//  thumb: getArtistThumb(artist) for ^^^^
+const pagesLoaded = []
 
 const searchEvents = (lat, long, page = 1) => {
   const getUrl = (page) => `http://api.songkick.com/api/3.0/events.json?apikey=io09K9l3ebJxmxe2&location=geo:${lat},${long}&page=${page}`
@@ -34,10 +36,28 @@ const searchEvents = (lat, long, page = 1) => {
   }))
   .timeout(15000)
   .tap(console.log.bind(console, 'GET Results:'))
-  .then(data => data && data.resultsPage.results.event)
+  .then(data => {
+    // if we have: result.event.length === perPage, get more
+    let results = data && data.resultsPage.results.event
+    pagesLoaded[page - 1] = results
+    console.log('pagesLoaded', pagesLoaded, 'RESULTS', results, 'perPage=', data.resultsPage.perPage);
+    if (page < 5 && results.length === data.resultsPage.perPage) {
+      return searchEvents(lat, long, page + 1)
+    } else {
+      console.log('DONE');
+      return pagesLoaded
+    }
+  })
+  .then(processPages)
+}
+const processPages = () => {
+  return Promise.resolve(pagesLoaded)
+  .reduce((events, page) => {
+    return events.concat(page)
+  }, [])
   .tap(items => console.log('Items count:', items.length))
   .map(transformConcert)
-  .filter((concert, index) => index < 5) // only first index will continue
+  .filter((concert, index) => index ) // only first index will continue
   .map(mergeAndFlattenArtists)
   // Flatten an array of arrays:
   .reduce((arr, concerts) => {
@@ -50,7 +70,7 @@ const searchEvents = (lat, long, page = 1) => {
 function getArtistThumb(artistName) {
   return Promise.resolve($.ajax({
     type: "GET",
-    url: `https://api.discogs.com/database/search?q=${artistName}&key=ulclHueFeYIAHyQDxmNM&secret=eMEnhWAsqfErBHadlxeLmdhRiVPYXENK`,
+     url:"", //`https://api.discogs.com/database/search?q=${artistName}&key=ulclHueFeYIAHyQDxmNM&secret=eMEnhWAsqfErBHadlxeLmdhRiVPYXENK`,
     async: true,
     dataType: "json"
   }))
