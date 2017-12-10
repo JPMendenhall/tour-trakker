@@ -2,12 +2,15 @@ const Nightmare = require('nightmare');
 // var fs = require('fs');
 let pandoraArtistsSorted = [];
 
+let username = document.getElementById("userName").value
+let password = document.getElementById("userPassword").value
+
 function getPandora() {
   return Nightmare({show: true, webPreferences:{ partition: 'nopersist'}})
   .goto('https://www.pandora.com/account/sign-in')
   .wait('input[name="username"]')
-  .type('input[name="username"]', 'nattysoccer9@yahoo.com')
-  .type('input[name="password"]', 'ska4gsus')
+  .type('input[name="username"]', username)
+  .type('input[name="password"]', password)
   .wait(750)
   .click('button[type="submit"]')
   .wait(5000)
