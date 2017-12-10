@@ -1,35 +1,53 @@
 let lat;
 let long;
 
+let allEvents = [];
+let matchedArtists = [];
+
 function showResult(result) {
-    let lat = result.geometry.location.lat();
-    let long = result.geometry.location.lng();
-    console.log(lat)
-    console.log(long)
-    searchEvents(lat, long).then(results => {
-      console.info('GREAT SUCCESS:', results)
-    })
+  let lat = result.geometry.location.lat();
+  let long = result.geometry.location.lng();
+  console.log(lat)
+  console.log(long)
+  searchEvents(lat, long).then(results => {
+    console.info('GREAT SUCCESS:', results)
+    allEvents = results;
+    loopArrays();
+    console.log(matchedArtists)
+    
+  });
+}
+
+function loopArrays(){
+  for (var i = 0; i < allEvents.length; i++) {
+    for (var j = 0; j < pandoraArtists.length; j++) {
+      if (allEvents[i].artist == pandoraArtists[j]) {
+        console.log('after if', allEvents[i].artist)
+        matchedArtists.push(allEvents[i])
+      }
+    }
+  }
 }
 
 function getLatitudeLongitude(callback, address) {
-    // If address is not supplied, use 'Denver, Colorado'
-    address = address || 'Denver, Colorado';
-    // Initialize the Geocoder
-    geocoder = new google.maps.Geocoder();
-    if (geocoder) {
-        geocoder.geocode({
-            'address': address
-        }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                callback(results[0]);
-            }
-        });
+// If address is not supplied, use 'Denver, Colorado'
+address = address || 'Denver, Colorado';
+// Initialize the Geocoder
+geocoder = new google.maps.Geocoder();
+if (geocoder) {
+  geocoder.geocode({
+    'address': address
+  }, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      callback(results[0]);
     }
+  });
+}
 }
 
 var button = document.getElementById('locationBtn');
 
-button.addEventListener("click", function () {
-    var address = document.getElementById('address').value;
-    getLatitudeLongitude(showResult, address)
+button.addEventListener("click", function() {
+var address = document.getElementById('address').value;
+getLatitudeLongitude(showResult, address)
 });

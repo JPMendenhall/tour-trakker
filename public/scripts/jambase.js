@@ -70,7 +70,7 @@ const processPages = () => {
 function getArtistThumb(artistName) {
   return Promise.resolve($.ajax({
     type: "GET",
-     url:"", //`https://api.discogs.com/database/search?q=${artistName}&key=ulclHueFeYIAHyQDxmNM&secret=eMEnhWAsqfErBHadlxeLmdhRiVPYXENK`,
+      url: `https://api.discogs.com/database/search?q=${artistName}&key=ulclHueFeYIAHyQDxmNM&secret=eMEnhWAsqfErBHadlxeLmdhRiVPYXENK`,
     async: true,
     dataType: "json"
   }))
