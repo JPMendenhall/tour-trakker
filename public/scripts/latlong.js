@@ -13,8 +13,12 @@ function showResult(result) {
     console.info('GREAT SUCCESS:', results)
     allEvents = results;
     loopArrays();
-    console.log(matchedArtists)
-    
+    for (let i = 0; i < matchedArtists.length; i++){
+      getArtistThumb(matchedArtists[i].artist)
+      .then(thumb => {
+        matchedArtists[i].thumb = thumb
+      })
+    }
   });
 }
 
@@ -22,7 +26,7 @@ function loopArrays(){
   for (var i = 0; i < allEvents.length; i++) {
     for (var j = 0; j < pandoraArtists.length; j++) {
       if (allEvents[i].artist == pandoraArtists[j]) {
-        console.log('after if', allEvents[i].artist)
+        console.log(allEvents[i].artist)
         matchedArtists.push(allEvents[i])
       }
     }

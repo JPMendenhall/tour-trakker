@@ -340,7 +340,6 @@ var pandoraArtists = [
 "Eric Prydz",
 "Erick Sermon",
 "Esoteric & Stu Bangas",
-"Evanescence",
 "Everlast",
 "Evil Nine & Danny Brown",
 "Excision",

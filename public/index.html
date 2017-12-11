@@ -53,6 +53,7 @@
               <div class="wrapper">
                 <span class="group-btn">
                 <button id="locationBtn" class="btn btn-primary btn-md">Find local shows</button>
+                <button ng-click='addCount()'>Test</button>
                 </span>
               </div>
             </div>
@@ -60,31 +61,31 @@
         </div><br />
       </div>
 
-      <div ng-repeat="matchedArtist in matchedArtists track by $index">
+      <div ng-repeat="matchedArtist in artistService() track by $index">
         <div class="centerPandora">
           <div class="row">
             <div class="col-med-12">
               <div class="content">
                 <div class="card" >
                   <div class="firstinfo">
-                    <img src="https://img.discogs.com/qMRTj4Ce8tqoE8p0J_kxTRx22Tg=/150x150/smart/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/A-38523-1411582552-7726.jpeg.jpg" />
+                    <img ng-src="{{matchedArtist.thumb}}" alt="Artist Image"/>
                     <div class="profileinfo">
                       <h1>{{ matchedArtist.artist }}</h1>
                       <h3>{{ matchedArtist.date }}</h3>
                       <h4>{{ matchedArtist.venue }}</h4>
                       <p class="bio"></p>
-                      <a href="#">
+                      <a ng-href="{{ matchedArtist.url}}" target="_blank">
                         <font color="black">Click for event details</font>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div class="badgescard info"><span id="days"></span><span id="hours"></span><span id="minutes"></span><span id="seconds"></span>
+                <div class="badgescard info">So many words<span id="days"></span><span id="hours"></span><span id="minutes"></span><span id="seconds"></span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div><br /><br /><br /><br />
       </div>
     </div>
   </div>

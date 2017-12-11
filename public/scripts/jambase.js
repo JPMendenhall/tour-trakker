@@ -10,7 +10,7 @@ const transformConcert = (concert) => ({
 const mergeAndFlattenArtists = concert => {
   return Promise.resolve(concert.artists)
     .delay(250)
-    .tap(artists => console.log('(250ms delayed) Artists:', artists))
+    // .tap(artists => console.log('(250ms delayed) Artists:', artists))
     .map(artist => {
       const result = Object.assign({}, concert, {
         artist: artist,
