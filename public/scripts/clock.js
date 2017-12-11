@@ -1,6 +1,6 @@
-function countdown(){
+function countdown(concertDate){
 				var now = new Date();
-				var eventDate = new Date(2017, 11, 14);
+				var eventDate = Date.parse(concertDate);
 				var currentTime = now.getTime();
 				var eventTime = eventDate.getTime();
 				var remTime = eventTime - currentTime;
