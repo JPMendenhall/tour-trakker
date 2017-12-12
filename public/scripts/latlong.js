@@ -5,6 +5,7 @@ let allEvents = [];
 let matchedArtists = [];
 
 function showResult(result) {
+  matchedArtists = [];
   let lat = result.geometry.location.lat();
   let long = result.geometry.location.lng();
   console.log(lat)
@@ -17,9 +18,18 @@ function showResult(result) {
       getArtistThumb(matchedArtists[i].artist)
       .then(thumb => {
         matchedArtists[i].thumb = thumb
+        imgPlaceholder();
       })
     }
-  });
+  })
+}
+
+function imgPlaceholder(){
+  for(let i = 0; i < matchedArtists.length; i++){
+    if(matchedArtists[i].thumb == ""){
+      matchedArtists[i].thumb = "../nophoto.jpg"
+    }
+  }
 }
 
 function loopArrays(){
@@ -27,7 +37,9 @@ function loopArrays(){
     for (var j = 0; j < pandoraArtists.length; j++) {
       if (allEvents[i].artist == pandoraArtists[j]) {
         console.log(allEvents[i].artist)
-        matchedArtists.push(allEvents[i])
+        if(allEvents[i].date !== null){
+          matchedArtists.push(allEvents[i])
+        }
       }
     }
   }

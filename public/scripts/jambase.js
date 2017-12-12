@@ -55,7 +55,7 @@ const processPages = () => {
   .reduce((events, page) => {
     return events.concat(page)
   }, [])
-  .tap(items => console.log('Items count:', items.length))
+  .tap(items => console.log('Items count:', items))
   .map(transformConcert)
   .filter((concert, index) => index ) // only first index will continue
   .map(mergeAndFlattenArtists)
