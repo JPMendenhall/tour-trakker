@@ -23,6 +23,11 @@ body {
   text-shadow: 4px 4px indigo;
 }
 
+.animated {
+  -webkit-animation-duration: 10s !important;
+  animation-duration: 10s !important;
+}
+
 .feed {
   margin: auto;
 }

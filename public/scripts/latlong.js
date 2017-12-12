@@ -67,3 +67,16 @@ button.addEventListener("click", function() {
 var address = document.getElementById('address').value;
 getLatitudeLongitude(showResult, address)
 });
+
+
+$(document).ready(function animationClick() {
+  logo = $('.tourtrakker');
+  btnClick = $('.clicks')
+  btnClick.click(
+    function() {
+      logo.addClass('animated jello');
+        window.setTimeout( function(){
+          logo.removeClass('animated jello');
+    }, 10000);
+    });
+})
