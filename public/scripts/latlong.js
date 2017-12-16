@@ -27,7 +27,7 @@ function showResult(result) {
 function imgPlaceholder(){
   for(let i = 0; i < matchedArtists.length; i++){
     if(matchedArtists[i].thumb == ""){
-      matchedArtists[i].thumb = "../nophoto.jpg"
+      matchedArtists[i].thumb = "nophoto.jpg"
     }
   }
 }

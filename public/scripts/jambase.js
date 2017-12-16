@@ -26,7 +26,7 @@ const mergeAndFlattenArtists = concert => {
 const pagesLoaded = []
 
 const searchEvents = (lat, long, page = 1) => {
-  const getUrl = (page) => `http://api.songkick.com/api/3.0/events.json?apikey=io09K9l3ebJxmxe2&location=geo:${lat},${long}&page=${page}`
+  const getUrl = (page) => `https://api.songkick.com/api/3.0/events.json?apikey=('Insert API Key')&location=geo:${lat},${long}&page=${page}`
 
   return Promise.resolve($.ajax({
     type: "GET",
@@ -70,7 +70,7 @@ const processPages = () => {
 function getArtistThumb(artistName) {
   return Promise.resolve($.ajax({
     type: "GET",
-      url: `https://api.discogs.com/database/search?q=${artistName}&key=ulclHueFeYIAHyQDxmNM&secret=eMEnhWAsqfErBHadlxeLmdhRiVPYXENK`,
+      url: `https://api.discogs.com/database/search?q=${artistName}&key=('API KEY')&secret=('Secret')`,
     async: true,
     dataType: "json"
   }))
